@@ -9,10 +9,8 @@ jobs:
   build:
   #定义名为 build 的作业。 子键将定义作业的属性 
     runs-on: ubuntu-latest 
-    container: node:16.16.0
     steps:
       - uses: actions/checkout@v2
-    
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -27,3 +25,10 @@ jobs:
       - name: weixin
         run: |
           python3 main.py
+      
+      # 设置Node环境 actions/setup-node@v1 是GitHub Marketplace其中的一个,相当于一个方法
+      # 使用一个Actions 使用uses关键字,  with表明参数
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
